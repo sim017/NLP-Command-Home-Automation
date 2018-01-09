@@ -1,22 +1,17 @@
 package com.example.android.home_automation;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.speech.RecognizerIntent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.home_automation.R;
-
 import java.util.ArrayList;
 import java.util.Locale;
-
-import static android.app.Activity.RESULT_OK;
 
 public class MainActivity extends Activity {
 
@@ -75,7 +70,9 @@ public class MainActivity extends Activity {
 
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    txtSpeechInput.setText(result.get(0));
+                    txtSpeechInput.setText(result.toString());
+                    Text_processing txt = new Text_processing();
+                    txt.str(result.toString());
                 }
                 break;
             }
