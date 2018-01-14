@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -71,8 +72,15 @@ public class MainActivity extends Activity {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     txtSpeechInput.setText(result.toString());
-                    Text_processing txt = new Text_processing();
-                    txt.str(result.toString());
+                    //Text_processing txt = new Text_processing(this);
+                    //txt.str(result.toString());
+                    PythonCallerInput pythonCallerInput = new PythonCallerInput();
+                    try{
+                        pythonCallerInput.pyt(result.toString());
+                    }catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             }
